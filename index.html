@@ -69,16 +69,17 @@
           playerScore++;
           computerScore++;
         }
+        console.log("Round: " + (i + 1));
         console.log("Player score: " + playerScore);
         console.log("Computer score: " + computerScore);
       }
       
       if (playerScore > computerScore) {
-        return ("You Win!");
+        return ("You Win the game!");
       } else if (computerScore > playerScore) {
-        return ("You Lose!");
+        return ("You Lose the game!");
       } else {
-        return ("It's a Tie!"); 
+        return ("The game ends in a Tie! Play again!"); 
       }
 
     }
