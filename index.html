@@ -9,55 +9,64 @@
 <body>
   <script>
     // Option to choose from
-    let options = ["rock", "paper", "scissors"];
     
     // Create a random choice for the computer
     function computerPlay () {
+      let options = ["rock", "paper", "scissors"];
       /* random() creates a floating point value between 0 and the array
        length, then floor() converts it to an integer to get a random
        index number to be used for the array*/
       let randomIndex = Math.floor(Math.random() * options.length);
       return options[randomIndex];
     }
-    
-    //let playerSelection = "rock";
     let computerSelection;
     let playerSelection;
-    
+
     function playRound (playerSelection, computerSelection) {
       computerSelection = computerPlay();
       playerSelection = prompt("Player's selection:").toLowerCase();
       if (playerSelection === computerSelection) {
-        return ("It's a tie!");
+        console.log("It's a tie!");
+        return ("tie");
       } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        return ("You Win! Rock crushes scissors");
+        console.log("You Win! Rock crushes scissors");
+        return ("player");
       } else if (computerSelection === "rock" && playerSelection === "scissors") {
-        return ("You Lose! Rock crushes scissors")
+        console.log("You Lose! Rock crushes scissors");
+        return ("computer");
       } else if (playerSelection === "paper" && computerSelection === "rock") {
-        return ("You Win! Paper covers rock");
+        console.log("You Win! Paper covers rock");
+        return ("player");
       } else if (computerSelection === "paper" && playerSelection === "rock") {
-        return ("You Lose! Paper covers rock")
+        console.log("You Lose! Paper covers rock");
+        return ("computer");
       } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return ("You Win! Scissors cut paper");
+        console.log("You Win! Scissors cut paper");
+        return ("player");
       } else if (computerSelection === "scissors" && playerSelection === "paper") {
-        return ("You Lose! Scissors cut paper")
+        console.log("You Lose! Scissors cut paper");
+        return ("computer");
       } else {
-        return ("it went terribly wrong");
+        console.log("it went terribly wrong");
+        return 0;
       }
     }
     ///console.log(playRound(playerSelection, computerSelection));
 
-    let winner = game();
-    console.log(winner);
+    let result = game();
+    console.log(result);
 
     function game() {
       let playerScore = 0;
       let computerScore = 0;
       for (let i = 0; i < 5; i++) {
-        playRound(playerSelection, computerSelection)
-        if (playerSelection === /^You Win!/) {
+        let winner = playRound(playerSelection, computerSelection);
+        if (winner === "player") {
           playerScore++;
+        } else if (winner === "computer") {
+          computerScore++;
         } else {
+          playerScore++;
           computerScore++;
         }
         console.log("Player score: " + playerScore);
@@ -66,8 +75,10 @@
       
       if (playerScore > computerScore) {
         return ("You Win!");
-      } else {
+      } else if (computerScore > playerScore) {
         return ("You Lose!");
+      } else {
+        return ("It's a Tie!"); 
       }
 
     }
