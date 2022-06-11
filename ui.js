@@ -78,22 +78,19 @@ function game() {
     playerScore++;
   } else if (winner === "computer") {
     computerScore++;
-  } else {
-    playerScore++;
-    computerScore++;
   }
 
   score.textContent = `Player score: ${playerScore} vs Computer score: ${computerScore}`;
   
-  if (rounds < 4) {
-    rounds++;
-  }
-  else {
+  if (playerScore === 5 || computerScore === 5) {
     result();
     buttons.forEach((button) => {
       button.style.visibility = "hidden";
     });
     reset.style.visibility = "visible";
+  }
+  else {
+    rounds++;
   }
 }
 
