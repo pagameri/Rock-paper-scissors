@@ -1,88 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Rock Paper Scissors</title>
 </head>
 <body>
-  <script>
-    // Create a random choice for the computer
-    function computerPlay () {
-      // Option to choose from
-      let options = ["rock", "paper", "scissors"];
-      /* random() creates a floating point value between 0 and the array
-       length, then floor() converts it to an integer to get a random
-       index number to be used for the array*/
-      let randomIndex = Math.floor(Math.random() * options.length);
-      return options[randomIndex];
-    }
-    let computerSelection;
-    let playerSelection;
-
-    function playRound (playerSelection, computerSelection) {
-      computerSelection = computerPlay();
-      playerSelection = prompt("Player's selection:").toLowerCase();
-      if (playerSelection === computerSelection) {
-        console.log("It's a tie!");
-        return ("tie");
-      } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        console.log("You Win! Rock crushes scissors");
-        return ("player");
-      } else if (computerSelection === "rock" && playerSelection === "scissors") {
-        console.log("You Lose! Rock crushes scissors");
-        return ("computer");
-      } else if (playerSelection === "paper" && computerSelection === "rock") {
-        console.log("You Win! Paper covers rock");
-        return ("player");
-      } else if (computerSelection === "paper" && playerSelection === "rock") {
-        console.log("You Lose! Paper covers rock");
-        return ("computer");
-      } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        console.log("You Win! Scissors cut paper");
-        return ("player");
-      } else if (computerSelection === "scissors" && playerSelection === "paper") {
-        console.log("You Lose! Scissors cut paper");
-        return ("computer");
-      } else {
-        console.log("it went terribly wrong");
-        return 0;
-      }
-    }
-
-    let result = game();
-    console.log(result);
-
-    function game() {
-      let playerScore = 0;
-      let computerScore = 0;
-      for (let i = 0; i < 5; i++) {
-        let winner = playRound(playerSelection, computerSelection);
-        if (winner === "player") {
-          playerScore++;
-        } else if (winner === "computer") {
-          computerScore++;
-        } else {
-          playerScore++;
-          computerScore++;
-        }
-        console.log("Round: " + (i + 1));
-        console.log("Player score: " + playerScore);
-        console.log("Computer score: " + computerScore);
-      }
-      
-      if (playerScore > computerScore) {
-        return ("You Win the game!");
-      } else if (computerScore > playerScore) {
-        return ("You Lose the game!");
-      } else {
-        return ("The game ends in a Tie! Play again!"); 
-      }
-
-    }
-
-  </script>
-  
+  <div class="button-container" style="visibility: visible">
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+  </div>
+  <div id="round"></div>
+  <div id="score"></div>
+  <div id="final"></div>
+  <div class="reset-container">
+    <button id="reset" style="visibility: hidden;">Reset Game</button>
+  </div>
+<script src="ui.js"></script>
 </body>
 </html>
