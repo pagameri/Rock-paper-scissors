@@ -3,19 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <title>Rock Paper Scissors</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="button-container" style="visibility: visible">
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
-  </div>
-  <div id="round"></div>
-  <div id="score"></div>
-  <div id="final"></div>
-  <div class="reset-container">
-    <button id="reset" style="visibility: hidden;">Reset Game</button>
-  </div>
+    <h1>Rock Paper Scissors</h1>
+    <div class="button-container" style="display: block;">
+      <button><img src="rock.png" id="rock" alt="rock"></button>
+      <button><img src="paper.png" id="paper" alt="paper"></button>
+      <button><img src="scissors.png" id="scissors" alt="scissors"></button>
+    </div>
+    <div class="reset-container" style="display: none;">
+      <button id="reset" >Reset Game</button>
+    </div>
+    <div class="score-keepers">
+      <div id="round"></div>
+      <div id="score"></div>
+      <div id="final"></div>
+    </div>
 <script src="ui.js"></script>
 </body>
 </html>
