@@ -2,7 +2,8 @@ const buttons = document.querySelectorAll('.button-container');
 const resultOfRound = document.getElementById('round');
 const score = document.getElementById('score');
 const final = document.getElementById('final');
-const reset = document.getElementById('reset');
+// const reset2 = document.getElementById('reset');
+const resetContainer = document.querySelectorAll('.reset-container');
 
 let computerSelection;
 let playerSelection;
@@ -18,20 +19,26 @@ buttons.forEach((button) => {
     });
 });
 
-reset.addEventListener('click', e => {
-  buttons.forEach((button) => {
-    button.style.visibility = "visible";
+resetContainer.forEach((item) => {
+  item.addEventListener('click', e => {
+    buttons.forEach((button) => {
+      button.style.display="block";
+    });
+    resetContainer.forEach((item) => {
+      item.style.display="none";
+    });
+    computerSelection = 0;
+    playerSelection = 0;
+    playerScore = 0;
+    computerScore = 0;
+    rounds = 0;
+    resultOfRound.textContent = "";
+    score.textContent = "";
+    final.textContent = "";
   });
-  reset.style.visibility = "hidden";
-  computerSelection = 0;
-  playerSelection = 0;
-  playerScore = 0;
-  computerScore = 0;
-  rounds = 0;
-  resultOfRound.textContent = "";
-  score.textContent = "";
-  final.textContent = "";
-});
+})
+
+
 
 function computerPlay () {
   let options = ["rock", "paper", "scissors"];
@@ -41,8 +48,6 @@ function computerPlay () {
 
 function playRound(playerSelection, computerSelection) {
   computerSelection = computerPlay();
-  console.log(playerSelection);
-  console.log(computerSelection);
 
   if (playerSelection === computerSelection) {
     resultOfRound.textContent += " - It's a tie!";
@@ -85,11 +90,12 @@ function game() {
   if (playerScore === 5 || computerScore === 5) {
     result();
     buttons.forEach((button) => {
-      button.style.visibility = "hidden";
+      button.style.display="none";
     });
-    reset.style.visibility = "visible";
-  }
-  else {
+    resetContainer.forEach((item) => {
+      item.style.display="block";
+    });
+  } else {
     rounds++;
   }
 }
