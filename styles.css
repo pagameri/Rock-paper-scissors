@@ -1,11 +1,11 @@
 * {
   margin: 0;
   padding: 0;
-  border: 1px solid red;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  color: rgb(0, 0, 0);
   background-image: url(wall.jpg);
 }
 
@@ -18,14 +18,33 @@ body {
 }
 
 header {
-  font-size: 60px;
+  font-size: 70px;
+  font-weight: bold;
+  background-color: rgb(86, 92, 92, 0.6);
+  color: rgb(50, 84, 233);
   min-height: 10vh;
+  text-align: center;
+  padding-top: 3vh;
 }
 
 .tracker {
+  font-size: 40px;
+  font-weight: bold;
   min-width: 100vh;
   display: flex;
   justify-content: space-between;
+  visibility: hidden;
+}
+
+#final {
+  font-size: 60px;
+}
+
+#reset {
+  background-color: transparent;
+  border: 0;
+  padding: 20px;
+  visibility: hidden;
 }
 
 .button-container {
@@ -33,21 +52,18 @@ header {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 50px
+  gap: 50px;
+  visibility: visible;
 }
 
-.reset-container {
-  min-width: 100vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
 
 div button img {
   height: auto;
   width: 250px;
 }
 
-.message {
+#message {
   min-width: 100 vh;
+  font-weight: bold;
+  font-size: 30px;
 }
