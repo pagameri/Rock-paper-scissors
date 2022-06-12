@@ -1,10 +1,10 @@
 const buttons = document.querySelectorAll('.button-container');
 const round = document.getElementById('round');
 const tracker = document.querySelector('.tracker');
-const message = document.getElementById('message');
+const endMsg = document.getElementById('endMsg');
 const player = document.getElementById('player');
 const computer = document.getElementById('computer');
-const final = document.getElementById('final');
+const midMsg = document.getElementById('midMsg');
 const resetBtn = document.getElementById('reset');
 const buttonContainer = document.querySelector('.button-container')
 
@@ -17,7 +17,7 @@ let rounds = 0;
 buttons.forEach((button) => {
   button.addEventListener('click', function (e) { 
     playerSelection = e.target.id;
-    final.textContent = "";
+    midMsg.textContent = "";
     tracker.style.visibility = "visible";
     round.textContent = `Round: ${rounds + 1}`;
     game();
@@ -35,9 +35,13 @@ resetBtn.addEventListener('click', e => {
   round.textContent = "Round:";
   player.textContent = "Player:";
   computer.textContent = "Computer:"
-  message.textContent = "";
-  final.textContent = "";
+  endMsg.textContent = "";
+  midMsg.textContent = "";
 });
+
+function styleButton() {
+
+}
 
 function computerPlay () {
   let options = ["rock", "paper", "scissors"];
@@ -49,36 +53,36 @@ function playRound(playerSelection, computerSelection) {
   computerSelection = computerPlay();
 
   if (playerSelection === computerSelection) {
-    message.textContent = "It's a tie!";
-    message.style.color="black";
+    endMsg.textContent = "It's a tie!";
+    endMsg.style.color="black";
     return ("tie");
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    message.textContent = "You Win! Rock crushes scissors";
-    message.style.color="green";
+    endMsg.textContent = "You Win! Rock crushes scissors";
+    endMsg.style.color="green";
     return ("player");
   } else if (computerSelection === "rock" && playerSelection === "scissors") {
-    message.textContent = "You Lose! Rock crushes scissors";
-    message.style.color="red";
+    endMsg.textContent = "You Lose! Scissors are crushed by rock";
+    endMsg.style.color="red";
     return ("computer");
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    message.textContent = "You Win! Paper covers rock";
-    message.style.color="green";
+    endMsg.textContent = "You Win! Paper covers rock";
+    endMsg.style.color="green";
     return ("player");
   } else if (computerSelection === "paper" && playerSelection === "rock") {
-    message.textContent = "You Lose! Paper covers rock";
-    message.style.color="red";
+    endMsg.textContent = "You Lose! Rock is covered by paper";
+    endMsg.style.color="red";
     return ("computer");
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    message.textContent = "You Win! Scissors cut paper";
-    message.style.color="green";
+    endMsg.textContent = "You Win! Scissors cut paper";
+    endMsg.style.color="green";
     return ("player");
   } else if (computerSelection === "scissors" && playerSelection === "paper") {
-    message.textContent = "You Lose! Scissors cut paper";
-    message.style.color="red";
-    message.style.color="green";
+    endMsg.textContent = "You Lose! Paper is cut by scissors";
+    endMsg.style.color="red";
+    endMsg.style.color="green";
     return ("computer");
   } else {
-    message.textContent = "It went terribly wrong";
+    endMsg.textContent = "It went terribly wrong";
     return 0;
   }
 }
@@ -108,14 +112,14 @@ function game() {
 
 function result() {
   if (playerScore > computerScore) {
-    final.textContent = "YOU WIN :)";
-    final.style.color="green";
+    midMsg.textContent = "YOU WIN :)";
+    midMsg.style.color="green";
   } else {
-    final.textContent = "GAME OVER :(";
-    final.style.color="red";
+    midMsg.textContent = "GAME OVER :(";
+    midMsg.style.color="red";
   }
-  message.textContent = "Click reset to play new game!";
-  message.style.color = "blue";
+  endMsg.textContent = "Click reset to play new game!";
+  endMsg.style.color = "blue";
 }
 
 
