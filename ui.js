@@ -1,8 +1,9 @@
 const buttons = document.querySelectorAll('.button-container');
-const resultOfRound = document.getElementById('round');
-const score = document.getElementById('score');
+const round = document.getElementById('round');
+const message = document.getElementById('message');
+const player = document.getElementById('player');
+const computer = document.getElementById('computer');
 const final = document.getElementById('final');
-// const reset2 = document.getElementById('reset');
 const resetContainer = document.querySelectorAll('.reset-container');
 
 let computerSelection;
@@ -14,7 +15,8 @@ let rounds = 0;
 buttons.forEach((button) => {
   button.addEventListener('click', function (e) { 
     playerSelection = e.target.id;
-    resultOfRound.textContent = `Round: ${rounds + 1}`;
+
+    round.textContent = `Round: ${rounds + 1}`;
     game();
     });
 });
@@ -32,8 +34,9 @@ resetContainer.forEach((item) => {
     playerScore = 0;
     computerScore = 0;
     rounds = 0;
-    resultOfRound.textContent = "";
-    score.textContent = "";
+    round.textContent = "Round:";
+    player.textContent = "Player:";
+    computer.textContent = "Computer:"
     final.textContent = "";
   });
 })
@@ -50,28 +53,28 @@ function playRound(playerSelection, computerSelection) {
   computerSelection = computerPlay();
 
   if (playerSelection === computerSelection) {
-    resultOfRound.textContent += " - It's a tie!";
+    message.textContent = "It's a tie!";
     return ("tie");
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    resultOfRound.textContent += " - You Win! Rock crushes scissors";
+    message.textContent = "You Win! Rock crushes scissors";
     return ("player");
   } else if (computerSelection === "rock" && playerSelection === "scissors") {
-    resultOfRound.textContent += " - You Lose! Rock crushes scissors";
+    message.textContent = "You Lose! Rock crushes scissors";
     return ("computer");
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    resultOfRound.textContent += " - You Win! Paper covers rock";
+    message.textContent = "You Win! Paper covers rock";
     return ("player");
   } else if (computerSelection === "paper" && playerSelection === "rock") {
-    resultOfRound.textContent += " - You Lose! Paper covers rock";
+    message.textContent = "You Lose! Paper covers rock";
     return ("computer");
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    resultOfRound.textContent += " - You Win! Scissors cut paper";
+    message.textContent = "You Win! Scissors cut paper";
     return ("player");
   } else if (computerSelection === "scissors" && playerSelection === "paper") {
-    resultOfRound.textContent += " - You Lose! Scissors cut paper";
+    message.textContent = "You Lose! Scissors cut paper";
     return ("computer");
   } else {
-    resultOfRound.textContent += " - it went terribly wrong";
+    message.textContent = "It went terribly wrong";
     return 0;
   }
 }
@@ -79,25 +82,33 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   let winner = playRound(playerSelection, computerSelection);
   
+
   if (winner === "player") {
     playerScore++;
-  } else if (winner === "computer") {
-    computerScore++;
+    player.textContent = `Player: ${playerScore}`;
   }
 
-  score.textContent = `Player score: ${playerScore} vs Computer score: ${computerScore}`;
+  else if (winner === "computer") {
+    computerScore++;
+    computer.textContent = `Computer: ${computerScore}`;
+  }
   
   if (playerScore === 5 || computerScore === 5) {
     result();
+    swapBoxes();
     buttons.forEach((button) => {
       button.style.display="none";
     });
     resetContainer.forEach((item) => {
-      item.style.display="block";
+      item.style.visibility="visible";
     });
   } else {
     rounds++;
   }
+}
+
+function swapBoxes() {
+  
 }
 
 function result() {
@@ -109,6 +120,3 @@ function result() {
     final.textContent = "IT'S A TIE!"; 
   }
 }
-
-
-
