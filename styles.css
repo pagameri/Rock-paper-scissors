@@ -10,11 +10,10 @@ body {
 }
 
 .container {
-  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 header {
@@ -28,12 +27,21 @@ header {
 }
 
 .tracker {
+  min-height: 10vh;
   font-size: 40px;
   font-weight: bold;
   min-width: 100vh;
   display: flex;
   justify-content: space-between;
   visibility: hidden;
+}
+
+.mid-container {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 #midMsg {
