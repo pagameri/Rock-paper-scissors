@@ -36,15 +36,20 @@ header {
   visibility: hidden;
 }
 
-#final {
+#midMsg {
   font-size: 60px;
 }
+
 
 #reset {
   background-color: transparent;
   border: 0;
   padding: 20px;
   visibility: hidden;
+}
+
+#reset:active {
+  transform: translateY(4px);
 }
 
 .button-container {
@@ -55,14 +60,27 @@ header {
   gap: 50px;
   visibility: visible;
 }
+.rock-btn, .paper-btn, .scissors-btn {
+  border: 5px transparent;
+}
 
+.rock-btn:hover, .paper-btn:hover, .scissors-btn:hover {
+  border: 5px solid red;
+  margin: -5px;
+}
+
+.rock-btn:active, .paper-btn:active, .scissors-btn:active {
+  border: 5px solid red;
+  margin: -5ps;
+  transform: translateY(4px);
+}
 
 div button img {
   height: auto;
   width: 250px;
 }
 
-#message {
+#endMsg {
   min-width: 100 vh;
   font-weight: bold;
   font-size: 30px;
